@@ -9,6 +9,6 @@ selection = st.pills(
 )
 
 st.title("Operações")
-rendafixa_df = pd.read_excel("Bases/Planilha de Movimentação.xlsx","Renda Fixa")
-st.dataframe(rendafixa_df)
+base_df = pd.read_excel("Bases/Planilha de Movimentação.xlsx",selection)
+st.dataframe(base_df)
 
