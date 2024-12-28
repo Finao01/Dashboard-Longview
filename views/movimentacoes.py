@@ -11,5 +11,5 @@ selection = st.pills(
 
 st.title("Operações")
 base_df = pd.read_excel("Bases/Planilha de Movimentação.xlsx",selection)
-st.dataframe(base_df)
+st.dataframe(base_df,hide_index = True,use_container_width = True)
 
