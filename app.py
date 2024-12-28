@@ -1,19 +1,13 @@
 import streamlit as st
 
 # --- PAGE SETUP ---
-page_1 = st.Page(
-    "views/page_1.py",
+movimentacoes = st.Page(
+    "views/movimentacoes.py",
     title="Página 1",
     icon=":material/savings:",
     default=True
 )
 
-page_2 = st.Page(
-    "views/page_2.py",
-    title="Página 2",
-    icon=":material/settings:",
-    
-)
 
 # --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
 # pg = st.navigation(pages=[about_page, project_1_page, project_2_page])
@@ -21,7 +15,7 @@ page_2 = st.Page(
 # --- NAVIGATION SETUP [WITH SECTIONS]---
 pg = st.navigation(
     {
-        "Qualquer coisa": [page_1,page_2]
+        "movimentacoes": [movimentacoes]
     }
 )
 
