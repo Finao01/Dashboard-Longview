@@ -5,13 +5,14 @@ page_1 = st.Page(
     "views/page_1.py",
     title="Página 1",
     icon=":material/savings:",
-    default=True
+    
 )
 
 page_2 = st.Page(
     "views/page_2.py",
     title="Página 2",
     icon=":material/settings:",
+    default=True
 )
 
 # --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
