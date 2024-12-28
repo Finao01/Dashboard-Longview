@@ -6,6 +6,7 @@ st.set_page_config(page_title="Movimentações de Clientes", page_icon="💰", l
 selection = st.pills(
     "Tipo de Operação",options = ["Ações","Fundos","Renda Fixa"],
     selection_mode="single",
+    default = "Ações"
 )
 
 st.title("Operações")
