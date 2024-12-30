@@ -21,7 +21,7 @@ selection = st.pills(
     default = "Ações"
 )
 
-st.title("Operações")
+st.title("Operações-teste")
 bases = carregar_base ()
 st.dataframe(bases[selection],hide_index = True,use_container_width = True)
 
