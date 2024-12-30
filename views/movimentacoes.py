@@ -6,7 +6,7 @@ st.set_page_config(page_title="Movimentações de Clientes", page_icon="💰", l
 
 #Declarar funcao para otimização da página
 
-@st.cache_data
+@st.cache_data()
 def carregar_base ():
   base_acoes = pd.read_excel("Bases/Planilha de Movimentação.xlsx",sheet_name = "Ações")
   base_rf = pd.read_excel("Bases/Planilha de Movimentação.xlsx",sheet_name = "Renda Fixa")
