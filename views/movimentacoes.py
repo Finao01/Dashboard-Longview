@@ -27,15 +27,15 @@ def carregar_bases ():
   base_rf = pd.read_excel(file_path,sheet_name = "Renda Fixa")
   base_fundos = pd.read_excel(file_path,sheet_name = "Fundos")
 
-# Formatar colunas de data para o padrão brasileiro (se as colunas de data existirem)
-if "Data Operação" in base_fundos.columns:
-  base_fundos["Data Operação"] = pd.to_datetime(base_fundos["Data Operação"]).dt.strftime('%d/%m/%Y')
+  # Formatar colunas de data para o padrão brasileiro (se as colunas de data existirem)
+  if "Data Operação" in base_fundos.columns:
+    base_fundos["Data Operação"] = pd.to_datetime(base_fundos["Data Operação"]).dt.strftime('%d/%m/%Y')
 
-if "Data" in base_acoes.columns:
-  base_acoes["Data"] = pd.to_datetime(base_acoes["Data"]).dt.strftime('%d/%m/%Y')
+  if "Data" in base_acoes.columns:
+    base_acoes["Data"] = pd.to_datetime(base_acoes["Data"]).dt.strftime('%d/%m/%Y')
 
-if "Data" in base_rf.columns:
-  base_rf["Data"] = pd.to_datetime(base_rf["Data"]).dt.strftime('%d/%m/%Y')
+  if "Data" in base_rf.columns:
+    base_rf["Data"] = pd.to_datetime(base_rf["Data"]).dt.strftime('%d/%m/%Y')
 
   dic_base = {
       "Ações":base_acoes,
