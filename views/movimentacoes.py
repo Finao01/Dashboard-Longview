@@ -51,7 +51,7 @@ with colunas_2:
 with coluna_3:
 
   today = datetime.now()
-  la_atras = today - timedelta(days=0)
+  la_atras = today - timedelta(days=365)
 
   data_seletor = st.date_input(
         "Selecione a data",
