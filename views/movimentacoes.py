@@ -82,7 +82,7 @@ else:
   base_filtrada = base_filtrada.loc[(base_filtrada[coluna_de_data] >= pd.Timestamp(start_date)) & (base_filtrada[coluna_de_data] <= pd.Timestamp(end_date))]
 
 
-total_financeiro = base_filtrada["Financeiro"].sum()
-st.metric(label="Total Financeiro", value=f"R$ {total_financeiro}")
+#total_financeiro = base_filtrada["Financeiro"].sum()
+#st.metric(label="Total Financeiro", value=f"R$ {total_financeiro}")
 
 st.dataframe(base_filtrada,hide_index=True,use_container_width=True)
