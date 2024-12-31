@@ -18,7 +18,7 @@ with header_2:
 #Declarar funcao para otimização da página
 
 @st.cache_data()
-def carregar_base ():
+def carregar_bases ():
   file_path = "Bases/Planilha de Movimentação.xlsx"
 
   base_acoes = pd.read_excel(file_path,sheet_name = "Ações")
@@ -32,47 +32,56 @@ def carregar_base ():
   }  
   return dic_base
 
-selecionar_ativo = st.pills(
-    "Selecione o Ativo",
-    options=["Fundos","Ações","Renda Fixa"],
-    selection_mode="single",
-    default="Fundos"
-)
+bases_df = carregar_bases()
 
-base_selecionada = bases[selecionar_ativo]
+colunas_1,colunas_2,coluna_3 = st.columns(3)
 
-if selecionar_ativo == "Fundos":
-  coluna_de_data = "Data Operação"
-else:
-  coluna_de_data = "Data"
+with colunas_1:
 
-seletor_1,seletor_2 = st.columns(2)
+  seletor_de_abas = st.pills("Selecione o Ativo",options=["Fundos","Ações","Renda Fixa"],selection_mode="single",default="Fundos")
 
-with seletor_1:
+with colunas_2:
+
+  base_selecionado_df = bases_df[seletor_de_abas]
+  carteiras_unicas = base_selecionado_df["Carteira"].unique()
+  selecionar_carteira = st.multiselect("Selecione a carteira",carteiras_unicas)
+
+with coluna_3:
 
   today = datetime.now()
-  last_month = today - timedelta(days=30)
+  la_atras = today - timedelta(days=1800)
 
   data_seletor = st.date_input(
         "Selecione a data",
-        (last_month, today),
+        (la_atras, today),
         format="DD/MM/YYYY",
     )
 
-if len(data_seletor) > 1:
-  start_date, end_date = data_seletor
+
+if len(selecionar_carteira) == 0:
+  base_filtrada = base_selecionado_df
 else:
-  start_date = data_seletor[0]
-  end_date = start_date
+  base_filtrada = base_selecionado_df.loc[base_selecionado_df["Carteira"].isin(selecionar_carteira)]
 
-filtered_df = base_selecionada.loc[(base_selecionada[coluna_de_data] >= pd.Timestamp(start_date)) & (base_selecionada[coluna_de_data] <= pd.Timestamp(end_date))]
+if len(data_seletor) == 0:
+  pass
+else:
+  if len(data_seletor) == 2:
+    start_date, end_date = data_seletor
+  else:
+    start_date = data_seletor[0]
+    end_date = start_date
 
-with seletor_2:
+  if seletor_de_abas == "Fundos":
+    coluna_de_data = "Data Operação"
+  else:
+    coluna_de_data = "Data"
 
-  carteiras = sorted(filtered_df["Carteira"].unique())
+  base_filtrada = base_filtrada.loc[(base_filtrada[coluna_de_data] >= pd.Timestamp(start_date)) & (base_filtrada[coluna_de_data] <= pd.Timestamp(end_date))]
 
-  selecionar_carteira = st.selectbox("Selecione a carteira",carteiras)
-  filtered_df = filtered_df.loc[filtered_df["Carteira"] == selecionar_carteira]
+
+total_financeiro = base_filtrada["Financeiro"].sum()
+st.metric(label="Total Financeiro", value=f"R$ {total_financeiro}")
 
 st.dataframe(bases[selection],hide_index = True,use_container_width = True)
 
