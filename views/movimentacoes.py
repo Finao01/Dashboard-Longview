@@ -31,6 +31,12 @@ def carregar_bases ():
   if "Data Operação" in base_fundos.columns:
     base_fundos["Data Operação"] = pd.to_datetime(base_fundos["Data Operação"])
 
+  if "Data Conversão" in base_fundos.columns:
+    base_fundos["Data Conversão"] = pd.to_datetime(base_fundos["Data Conversão"])
+
+  if "Data Liquidação" in base_fundos.columns:
+    base_fundos["Data Liquidação"] = pd.to_datetime(base_fundos["Data Liquidação"])
+
   if "Data" in base_acoes.columns:
     base_acoes["Data"] = pd.to_datetime(base_acoes["Data"])
 
