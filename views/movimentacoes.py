@@ -27,7 +27,7 @@ def carregar_bases ():
   base_rf = pd.read_excel(file_path,sheet_name = "Renda Fixa")
   base_fundos = pd.read_excel(file_path,sheet_name = "Fundos")
 
-  # Formatar colunas de data para o padrão brasileiro (se as colunas de data existirem)
+  # Garantir que as colunas de data sejam do tipo datetime
   if "Data Operação" in base_fundos.columns:
     base_fundos["Data Operação"] = pd.to_datetime(base_fundos["Data Operação"])
 
