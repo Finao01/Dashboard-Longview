@@ -85,5 +85,4 @@ else:
 total_financeiro = base_filtrada["Financeiro"].sum()
 st.metric(label="Total Financeiro", value=f"R$ {total_financeiro}")
 
-st.dataframe(bases[selection],hide_index = True,use_container_width = True)
-
+st.dataframe(base_filtrada,hide_index=True,use_container_width=True)
