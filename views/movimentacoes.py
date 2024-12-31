@@ -95,7 +95,7 @@ else:
 #total_financeiro = base_filtrada["Financeiro"].sum()
 #st.metric(label="Total Financeiro", value=f"R$ {total_financeiro}")
 
-if "Data Operação" in base_filtrada.columns:
+if "Data Operação" or "Data Conversão" or "Data Liquidação" in base_filtrada.columns:
     base_filtrada["Data Operação"] = base_filtrada["Data Operação"].dt.strftime('%d/%m/%Y')
 
 if "Data" in base_filtrada.columns:
