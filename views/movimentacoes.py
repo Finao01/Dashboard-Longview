@@ -97,6 +97,8 @@ else:
 
 if "Data Operação" or "Data Conversão" or "Data Liquidação" in base_filtrada.columns:
     base_filtrada["Data Operação"] = base_filtrada["Data Operação"].dt.strftime('%d/%m/%Y')
+    base_filtrada["Data Conversão"] = base_filtrada["Data Conversão"].dt.strftime('%d/%m/%Y')
+    base_filtrada["Data Liquidação"] = base_filtrada["Data Liquidação"].dt.strftime('%d/%m/%Y')
 
 if "Data" in base_filtrada.columns:
     base_filtrada["Data"] = base_filtrada["Data"].dt.strftime('%d/%m/%Y')
