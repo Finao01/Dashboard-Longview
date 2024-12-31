@@ -28,14 +28,14 @@ def carregar_bases ():
   base_fundos = pd.read_excel(file_path,sheet_name = "Fundos")
 
   # Garantir que as colunas de data sejam do tipo datetime
-  if "Data Operação" in base_fundos.columns:
-    base_fundos["Data Operação"] = pd.to_datetime(base_fundos["Data Operação"])
+  #if "Data Operação" in base_fundos.columns:
+  #  base_fundos["Data Operação"] = pd.to_datetime(base_fundos["Data Operação"])
 
-  if "Data" in base_acoes.columns:
-    base_acoes["Data"] = pd.to_datetime(base_acoes["Data"])
+  #if "Data" in base_acoes.columns:
+  #  base_acoes["Data"] = pd.to_datetime(base_acoes["Data"])
 
-  if "Data" in base_rf.columns:
-    base_rf["Data"] = pd.to_datetime(base_rf["Data"])
+  #if "Data" in base_rf.columns:
+  #  base_rf["Data"] = pd.to_datetime(base_rf["Data"])
 
   dic_base = {
       "Ações":base_acoes,
