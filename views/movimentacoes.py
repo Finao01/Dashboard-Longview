@@ -108,6 +108,7 @@ else:
 #total_financeiro = base_filtrada["Financeiro"].sum()
 #st.metric(label="Total Financeiro", value=f"R$ {total_financeiro}")
 
+#Formatação das colunas em 'data' e em 'percentual'
 if "Data Operação" in base_filtrada.columns:
     base_filtrada["Data Operação"] = base_filtrada["Data Operação"].dt.strftime('%d/%m/%Y')
 
@@ -119,5 +120,8 @@ if "Data Liquidação" in base_filtrada.columns:
 
 if "Data" in base_filtrada.columns:
     base_filtrada["Data"] = base_filtrada["Data"].dt.strftime('%d/%m/%Y')
+
+if "Taxa Operação" in base_filtrada.columns:
+    base_filtrada["Taxa Operação"] = base_filtrada["Taxa Operação"].apply(lambda x: f"{x*100:.2f}%" if pd.notnull(x) else "")
 
 st.dataframe(base_filtrada,hide_index=True,use_container_width=True)
