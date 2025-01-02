@@ -15,7 +15,7 @@ with header_1:
 
 with header_2:
 
-  st.title("Controle de Movimentação 2")
+  st.title("Controle de Movimentação")
 
 #Declarar funcao para otimização da página
 
