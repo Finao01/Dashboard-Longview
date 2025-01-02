@@ -62,7 +62,7 @@ with colunas_1:
   if seletor_de_abas in bases_df:
     base_selecionado_df = bases_df[seletor_de_abas]
   else:
-    st.error(f"O ativo selecionado '{seletor_de_abas}' não foi encontrado nas bases disponíveis.")
+    st.error(f"O ativo selecionado '{seletor_de_abas}' não foi encontrado nas bases disponíveis. Selecione uma das opções acima!")
     st.stop()  # Interrompe a execução caso o valor seja inválido
 
 with colunas_2:
