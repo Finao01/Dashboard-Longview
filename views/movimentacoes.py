@@ -15,7 +15,7 @@ with header_1:
 
 with header_2:
 
-  st.title("Controle de Movimentação")
+  st.title("Controle de Movimentação 2")
 
 #Declarar funcao para otimização da página
 
@@ -47,7 +47,7 @@ def carregar_bases ():
       "Ações":base_acoes,
       "Renda Fixa":base_rf,
       "Fundos":base_fundos
-  }  
+  }
   return dic_base
 
 bases_df = carregar_bases()
@@ -57,6 +57,13 @@ colunas_1,colunas_2,coluna_3 = st.columns(3)
 with colunas_1:
 
   seletor_de_abas = st.pills("Selecione o Ativo",options=["Fundos","Ações","Renda Fixa"],selection_mode="single",default="Fundos")
+  
+# Verificar se o ativo selecionado existe no dicionário
+  if seletor_de_abas in bases_df:
+    base_selecionado_df = bases_df[seletor_de_abas]
+  else:
+    st.error(f"O ativo selecionado '{seletor_de_abas}' não foi encontrado nas bases disponíveis.")
+    st.stop()  # Interrompe a execução caso o valor seja inválido
 
 with colunas_2:
 
